@@ -1,0 +1,1 @@
+﻿{"mtype": "group_created", "group_id":"GRPID", "group_name":"GRPNAME"}

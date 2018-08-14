@@ -1,0 +1,1 @@
+﻿{"mtype": "text_message", "msg_id":"MSGID", "sender_id":"USERID", "group_id":"GRPID", "message":"MSG", "ts":TIME}

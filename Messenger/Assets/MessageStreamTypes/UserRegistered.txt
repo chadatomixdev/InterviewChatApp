@@ -1,0 +1,1 @@
+﻿{"mtype": "user_registered", "user_id":"USERID", "name":"FULLNAME"}

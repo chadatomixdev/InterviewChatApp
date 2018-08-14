@@ -1,0 +1,1 @@
+﻿{"mtype": "delivery_report", "msg_id":"MSGID", "recipient_id":"USERID", "ts":TIME}
