@@ -21,6 +21,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseManagedDesignTimeResourceGenerator>False</AndroidUseManagedDesignTimeResourceGenerator>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -52,24 +53,89 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Xamarin.Android.Support.Annotations">
+      <HintPath>packages\Xamarin.Android.Support.Annotations.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Arch.Core.Common">
+      <HintPath>packages\Xamarin.Android.Arch.Core.Common.1.0.0.1\lib\MonoAndroid80\Xamarin.Android.Arch.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Arch.Lifecycle.Common">
+      <HintPath>packages\Xamarin.Android.Arch.Lifecycle.Common.1.0.3.1\lib\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Arch.Lifecycle.Runtime">
+      <HintPath>packages\Xamarin.Android.Arch.Lifecycle.Runtime.1.0.3.1\lib\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Compat">
+      <HintPath>packages\Xamarin.Android.Support.Compat.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Core.UI">
+      <HintPath>packages\Xamarin.Android.Support.Core.UI.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>packages\Xamarin.Android.Support.v7.RecyclerView.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Core.Utils">
+      <HintPath>packages\Xamarin.Android.Support.Core.Utils.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Core.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Fragment">
+      <HintPath>packages\Xamarin.Android.Support.Fragment.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Fragment.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Media.Compat">
+      <HintPath>packages\Xamarin.Android.Support.Media.Compat.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Media.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>packages\Xamarin.Android.Support.v4.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>packages\Xamarin.Android.Support.v7.CardView.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>packages\SQLitePCLRaw.core.1.1.5\lib\MonoAndroid\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.lib.e_sqlite3">
+      <HintPath>packages\SQLitePCLRaw.lib.e_sqlite3.android.1.1.5\lib\MonoAndroid\SQLitePCLRaw.lib.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+      <HintPath>packages\SQLitePCLRaw.provider.e_sqlite3.android.1.1.5\lib\MonoAndroid\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_green">
+      <HintPath>packages\SQLitePCLRaw.bundle_green.1.1.5\lib\MonoAndroid\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>packages\SQLitePCLRaw.bundle_green.1.1.5\lib\MonoAndroid\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite-net">
+      <HintPath>packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="MessageStream.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\DeliveryReport.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\ImageMessage.cs" />
+    <Compile Include="Models\TextMessage.cs" />
+    <Compile Include="MessageAdapter.cs" />
+    <Compile Include="MessageViewHolder.cs" />
+    <Compile Include="Helpers\ApplicationHelper.cs" />
+    <Compile Include="Helpers\StartupHelper.cs" />
+    <Compile Include="Models\UserRegistration.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\layout\Restaurant.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -78,6 +144,9 @@
     <Folder Include="Resources\mipmap-xhdpi\" />
     <Folder Include="Resources\mipmap-xxhdpi\" />
     <Folder Include="Resources\mipmap-xxxhdpi\" />
+    <Folder Include="Models\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\MessageStreamTypes\TextMessage.txt" />
@@ -102,4 +171,16 @@
 		<Target Name="AfterBuild">
 		</Target>
 	-->
+  <Import Project="packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />
+  <Import Project="packages\Xamarin.Android.Arch.Core.Common.1.0.0.1\build\MonoAndroid80\Xamarin.Android.Arch.Core.Common.targets" Condition="Exists('packages\Xamarin.Android.Arch.Core.Common.1.0.0.1\build\MonoAndroid80\Xamarin.Android.Arch.Core.Common.targets')" />
+  <Import Project="packages\Xamarin.Android.Arch.Lifecycle.Common.1.0.3.1\build\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Common.targets" Condition="Exists('packages\Xamarin.Android.Arch.Lifecycle.Common.1.0.3.1\build\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Common.targets')" />
+  <Import Project="packages\Xamarin.Android.Arch.Lifecycle.Runtime.1.0.3.1\build\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Runtime.targets" Condition="Exists('packages\Xamarin.Android.Arch.Lifecycle.Runtime.1.0.3.1\build\MonoAndroid80\Xamarin.Android.Arch.Lifecycle.Runtime.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.Compat.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Compat.targets" Condition="Exists('packages\Xamarin.Android.Support.Compat.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Compat.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.Core.UI.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Core.UI.targets" Condition="Exists('packages\Xamarin.Android.Support.Core.UI.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Core.UI.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.v7.RecyclerView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.RecyclerView.targets" Condition="Exists('packages\Xamarin.Android.Support.v7.RecyclerView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.RecyclerView.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.Core.Utils.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Core.Utils.targets" Condition="Exists('packages\Xamarin.Android.Support.Core.Utils.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Core.Utils.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.Fragment.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Fragment.targets" Condition="Exists('packages\Xamarin.Android.Support.Fragment.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Fragment.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.Media.Compat.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Media.Compat.targets" Condition="Exists('packages\Xamarin.Android.Support.Media.Compat.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Media.Compat.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.v4.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v4.targets" Condition="Exists('packages\Xamarin.Android.Support.v4.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v4.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.v7.CardView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('packages\Xamarin.Android.Support.v7.CardView.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.v7.CardView.targets')" />
 </Project>
