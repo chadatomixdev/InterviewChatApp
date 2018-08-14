@@ -135,7 +135,8 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\layout\Restaurant.axml" />
+    <AndroidResource Include="Resources\layout\TextMessage.axml" />
+    <AndroidResource Include="Resources\layout\ImageMessage.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -147,6 +148,7 @@
     <Folder Include="Models\" />
     <Folder Include="Helpers\" />
     <Folder Include="Repository\" />
+    <Folder Include="Database Models\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\MessageStreamTypes\TextMessage.txt" />

@@ -51,7 +51,7 @@ namespace Messenger
             switch (viewType)
             {
                 default: 
-                    itemView = LayoutInflater.From(viewGroup.Context).Inflate(Resource.Layout.ControlText, viewGroup, false);
+                    itemView = LayoutInflater.From(viewGroup.Context).Inflate(Resource.Layout.TextMessage, viewGroup, false);
                     return new TextMessageViewHolder(itemView);
             }
         }
