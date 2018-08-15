@@ -107,6 +107,9 @@
     <Reference Include="SQLite-net">
       <HintPath>packages\sqlite-net-pcl.1.4.118\lib\netstandard1.1\SQLite-net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -118,11 +121,13 @@
     <Compile Include="Models\ImageMessage.cs" />
     <Compile Include="Models\TextMessage.cs" />
     <Compile Include="MessageAdapter.cs" />
-    <Compile Include="MessageViewHolder.cs" />
     <Compile Include="Helpers\ApplicationHelper.cs" />
     <Compile Include="Helpers\StartupHelper.cs" />
     <Compile Include="Models\UserRegistration.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Database Models\User.cs" />
+    <Compile Include="Models\IMessage.cs" />
+    <Compile Include="Helpers\MessageConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

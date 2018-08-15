@@ -1,7 +1,10 @@
-﻿namespace Messenger.Models
+﻿using Newtonsoft.Json;
+
+namespace Messenger.Models
 {
-    public class TextMessage
+    public class TextMessage : IMessage
     {
+        [JsonProperty]
         public string mtype { get; set; }
         public string msg_id { get; set; }
         public string sender_id { get; set; }

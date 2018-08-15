@@ -1,6 +1,6 @@
 ﻿namespace Messenger.Models
 {
-    public class DeliveryReport
+    public class DeliveryReport : IMessage
     {
         public string mtype { get; set; }
         public string msg_id { get; set; }

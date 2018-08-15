@@ -342,6 +342,15 @@ namespace Messenger
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f05000e
+			public const int ImageMessageTextView = 2131034126;
+			
+			// aapt resource value: 0x7f05000d
+			public const int ImageMessagenameTextView = 2131034125;
+			
+			// aapt resource value: 0x7f05000c
+			public const int ImageMessagephotoImageView = 2131034124;
+			
 			// aapt resource value: 0x7f050025
 			public const int TextMessageMessageTextView = 2131034149;
 			
@@ -408,9 +417,6 @@ namespace Messenger
 			// aapt resource value: 0x7f050016
 			public const int media_actions = 2131034134;
 			
-			// aapt resource value: 0x7f05000d
-			public const int nameTextView = 2131034125;
-			
 			// aapt resource value: 0x7f05000b
 			public const int normal = 2131034123;
 			
@@ -423,9 +429,6 @@ namespace Messenger
 			// aapt resource value: 0x7f050018
 			public const int notification_main_column_container = 2131034136;
 			
-			// aapt resource value: 0x7f05000c
-			public const int photoImageView = 2131034124;
-			
 			// aapt resource value: 0x7f05000f
 			public const int recyclerView = 2131034127;
 			
@@ -434,9 +437,6 @@ namespace Messenger
 			
 			// aapt resource value: 0x7f05001a
 			public const int right_side = 2131034138;
-			
-			// aapt resource value: 0x7f05000e
-			public const int specialtyTextView = 2131034126;
 			
 			// aapt resource value: 0x7f050015
 			public const int status_bar_latest_event_content = 2131034133;

@@ -19,6 +19,15 @@ namespace Messenger
             }
         }
 
+        public class ImageMessageViewHolder : RecyclerView.ViewHolder
+        {
+
+            public ImageMessageViewHolder(View v) : base(v)
+            {
+
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -40,8 +49,6 @@ namespace Messenger
         #endregion
 
         public override int ItemCount => throw new NotImplementedException();
-
-       
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup viewGroup, int viewType)
         {

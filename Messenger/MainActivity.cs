@@ -1,14 +1,16 @@
 ﻿using System;
 using Android.App;
 using Android.OS;
-using Android.Support.V7.Widget;
+using Messenger.Helpers;
+using Messenger.Models;
+using Newtonsoft.Json;
 
 namespace Messenger
 {
     [Activity(Label = "Messenger", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        RecyclerView recyclerView;
+        //RecyclerView recyclerView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -16,16 +18,20 @@ namespace Messenger
 
             SetContentView(Resource.Layout.Main);
 
-            //StartupHelper.Initialize();
+            StartupHelper.Initialize();
 
-
-
-
-            //handle incoming messages with the subscribe method
-            new MessageStream().Subscribe(Console.WriteLine);
+            new MessageStream().Subscribe(callback);
 
             //publish messages with the send method
             new MessageStream().Send("My message");
         }
+
+        readonly Action<string> callback = o =>
+                 {
+                     string result = o;
+                     var message = JsonConvert.DeserializeObject<IMessage>(result, new MessageConverter());
+
+                    
+                 };
     }
 }

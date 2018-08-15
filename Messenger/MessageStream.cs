@@ -39,6 +39,11 @@ namespace Messenger
             };
         }
 
+        internal void Subscribe()
+        {
+            throw new NotImplementedException();
+        }
+
         private Timer tmrPubisher;
         public void Subscribe(Action<string> handler)
         {

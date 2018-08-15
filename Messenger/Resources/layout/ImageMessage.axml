@@ -7,27 +7,25 @@
     android:minHeight="25px"
     android:paddingBottom="4dp">
     <ImageView
-        android:id="@+id/photoImageView"
+        android:id="@+id/ImageMessagephotoImageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:padding="5dp" />
     <TextView
-        android:id="@+id/nameTextView"
-        android:layout_toRightOf="@id/photoImageView"
-        android:text="--name--"
+        android:id="@+id/ImageMessagenameTextView"
+        android:layout_toRightOf="@id/ImageMessagephotoImageView"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp" />
     <TextView
-        android:id="@+id/specialtyTextView"
-        android:layout_toRightOf="@id/photoImageView"
-        android:layout_below="@id/nameTextView"
-        android:text="--speciality--"
+        android:id="@+id/ImageMessageTextView"
+        android:layout_toRightOf="@id/ImageMessagephotoImageView"
+        android:layout_below="@id/ImageMessagenameTextView"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingLeft="5dp" />
 </RelativeLayout>

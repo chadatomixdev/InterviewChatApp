@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using Messenger.DatabaseModels;
+using SQLite;
 
 namespace Messenger.Helpers
 {
@@ -14,8 +15,7 @@ namespace Messenger.Helpers
 
         static void SetupDatabase(SQLiteConnection sqlConnection)
         {
-            //sqlConnection.CreateTable<Valuation>();
-            //sqlConnection.CreateTable<ValuationDetail>();
+            sqlConnection.CreateTable<User>();
         }
     }
 }
