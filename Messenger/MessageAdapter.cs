@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Messenger.Models;
 
 namespace Messenger
 {
     public class MessageAdapter : RecyclerView.Adapter
     {
         LayoutInflater Inflater { get; set; }
+        public IList<IMessage> Items { get; set; }
+
 
         #region View Holders 
 
@@ -32,9 +36,9 @@ namespace Messenger
 
         #region Constructor
 
-        public MessageAdapter()
+        public MessageAdapter(List<IMessage> items)
         {
-
+            Items = items;
         }
 
         #endregion
