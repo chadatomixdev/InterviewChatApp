@@ -29,11 +29,10 @@ namespace Messenger
 
             StartupHelper.Initialize();
 
-             //new MessageStream().Subscribe(callback);
+            //new MessageStream().Subscribe(callback);
 
             ////publish messages with the send method
             //new MessageStream().Send("My message");
-
 
             var repository = new GenericRepository<TextMessage>();
             var mg = repository.GetAll();

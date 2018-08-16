@@ -128,6 +128,8 @@
     <Compile Include="Database Models\User.cs" />
     <Compile Include="Models\IMessage.cs" />
     <Compile Include="Helpers\MessageConverter.cs" />
+    <Compile Include="Models\MessageTypes.cs" />
+    <Compile Include="Models\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

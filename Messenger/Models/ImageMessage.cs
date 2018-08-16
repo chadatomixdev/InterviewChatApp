@@ -7,5 +7,10 @@
         public string sender_id { get; set; }
         public string group_id { get; set; }
         public string url { get; set; }
+
+        public MessageTypes GetViewType()
+        {
+            return MessageTypes.ImageMessage;
+        }
     }
 }

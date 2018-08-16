@@ -3,5 +3,7 @@
     public interface IMessage
     {
         string mtype { get; set; }
+
+        MessageTypes GetViewType();
     }
 }

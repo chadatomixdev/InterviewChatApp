@@ -8,5 +8,10 @@
         public string group_id { get; set; }
         public string message { get; set; }
         public string ts { get; set; }
+
+        public MessageTypes GetViewType()
+        {
+            return MessageTypes.TextMessage;
+        }
     }
 }
