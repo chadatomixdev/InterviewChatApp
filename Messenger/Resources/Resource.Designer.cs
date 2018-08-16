@@ -342,38 +342,35 @@ namespace Messenger
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f05000e
-			public const int ImageMessageTextView = 2131034126;
-			
 			// aapt resource value: 0x7f05000d
-			public const int ImageMessagenameTextView = 2131034125;
+			public const int ImageMessageNameTextView = 2131034125;
 			
 			// aapt resource value: 0x7f05000c
-			public const int ImageMessagephotoImageView = 2131034124;
-			
-			// aapt resource value: 0x7f050025
-			public const int TextMessageMessageTextView = 2131034149;
+			public const int ImageMessagePhotoImageView = 2131034124;
 			
 			// aapt resource value: 0x7f050024
-			public const int TextMessageNameTextView = 2131034148;
+			public const int TextMessageMessageTextView = 2131034148;
 			
-			// aapt resource value: 0x7f050013
-			public const int action0 = 2131034131;
-			
-			// aapt resource value: 0x7f050010
-			public const int action_container = 2131034128;
-			
-			// aapt resource value: 0x7f050017
-			public const int action_divider = 2131034135;
-			
-			// aapt resource value: 0x7f050011
-			public const int action_image = 2131034129;
+			// aapt resource value: 0x7f050023
+			public const int TextMessageNameTextView = 2131034147;
 			
 			// aapt resource value: 0x7f050012
-			public const int action_text = 2131034130;
+			public const int action0 = 2131034130;
 			
-			// aapt resource value: 0x7f050021
-			public const int actions = 2131034145;
+			// aapt resource value: 0x7f05000f
+			public const int action_container = 2131034127;
+			
+			// aapt resource value: 0x7f050016
+			public const int action_divider = 2131034134;
+			
+			// aapt resource value: 0x7f050010
+			public const int action_image = 2131034128;
+			
+			// aapt resource value: 0x7f050011
+			public const int action_text = 2131034129;
+			
+			// aapt resource value: 0x7f050020
+			public const int actions = 2131034144;
 			
 			// aapt resource value: 0x7f050007
 			public const int async = 2131034119;
@@ -381,26 +378,26 @@ namespace Messenger
 			// aapt resource value: 0x7f050008
 			public const int blocking = 2131034120;
 			
-			// aapt resource value: 0x7f050014
-			public const int cancel_action = 2131034132;
+			// aapt resource value: 0x7f050013
+			public const int cancel_action = 2131034131;
 			
-			// aapt resource value: 0x7f05001c
-			public const int chronometer = 2131034140;
+			// aapt resource value: 0x7f05001b
+			public const int chronometer = 2131034139;
 			
-			// aapt resource value: 0x7f050023
-			public const int end_padder = 2131034147;
+			// aapt resource value: 0x7f050022
+			public const int end_padder = 2131034146;
 			
 			// aapt resource value: 0x7f050009
 			public const int forever = 2131034121;
 			
-			// aapt resource value: 0x7f05001e
-			public const int icon = 2131034142;
-			
-			// aapt resource value: 0x7f050022
-			public const int icon_group = 2131034146;
-			
 			// aapt resource value: 0x7f05001d
-			public const int info = 2131034141;
+			public const int icon = 2131034141;
+			
+			// aapt resource value: 0x7f050021
+			public const int icon_group = 2131034145;
+			
+			// aapt resource value: 0x7f05001c
+			public const int info = 2131034140;
 			
 			// aapt resource value: 0x7f05000a
 			public const int italic = 2131034122;
@@ -414,32 +411,32 @@ namespace Messenger
 			// aapt resource value: 0x7f050002
 			public const int line3 = 2131034114;
 			
-			// aapt resource value: 0x7f050016
-			public const int media_actions = 2131034134;
+			// aapt resource value: 0x7f050015
+			public const int media_actions = 2131034133;
 			
 			// aapt resource value: 0x7f05000b
 			public const int normal = 2131034123;
 			
-			// aapt resource value: 0x7f050020
-			public const int notification_background = 2131034144;
-			
-			// aapt resource value: 0x7f050019
-			public const int notification_main_column = 2131034137;
+			// aapt resource value: 0x7f05001f
+			public const int notification_background = 2131034143;
 			
 			// aapt resource value: 0x7f050018
-			public const int notification_main_column_container = 2131034136;
+			public const int notification_main_column = 2131034136;
 			
-			// aapt resource value: 0x7f05000f
-			public const int recyclerView = 2131034127;
+			// aapt resource value: 0x7f050017
+			public const int notification_main_column_container = 2131034135;
 			
-			// aapt resource value: 0x7f05001f
-			public const int right_icon = 2131034143;
+			// aapt resource value: 0x7f05000e
+			public const int recyclerView = 2131034126;
 			
-			// aapt resource value: 0x7f05001a
-			public const int right_side = 2131034138;
+			// aapt resource value: 0x7f05001e
+			public const int right_icon = 2131034142;
 			
-			// aapt resource value: 0x7f050015
-			public const int status_bar_latest_event_content = 2131034133;
+			// aapt resource value: 0x7f050019
+			public const int right_side = 2131034137;
+			
+			// aapt resource value: 0x7f050014
+			public const int status_bar_latest_event_content = 2131034132;
 			
 			// aapt resource value: 0x7f050003
 			public const int tag_transition_group = 2131034115;
@@ -450,8 +447,8 @@ namespace Messenger
 			// aapt resource value: 0x7f050005
 			public const int text2 = 2131034117;
 			
-			// aapt resource value: 0x7f05001b
-			public const int time = 2131034139;
+			// aapt resource value: 0x7f05001a
+			public const int time = 2131034138;
 			
 			// aapt resource value: 0x7f050006
 			public const int title = 2131034118;

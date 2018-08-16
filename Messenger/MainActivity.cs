@@ -34,18 +34,33 @@ namespace Messenger
             ////publish messages with the send method
             //new MessageStream().Send("My message");
 
-            var repository = new GenericRepository<TextMessage>();
-            var mg = repository.GetAll();
+            GetMessages();
 
-            foreach (var m in mg)
+            recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+
+            layoutManager = new LinearLayoutManager(this);
+            recyclerView.SetLayoutManager(layoutManager);
+            Adapter = new MessageAdapter(Messages);
+            recyclerView.SetAdapter(Adapter);
+        }
+
+        void GetMessages()
+        {
+            var textrepository = new GenericRepository<TextMessage>();
+            var textmsgs = textrepository.GetAll();
+
+            foreach (var m in textmsgs)
             {
                 Messages.Add(m);
             }
 
-            recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
-            layoutManager = new LinearLayoutManager(this);
-            recyclerView.SetLayoutManager(layoutManager);
-            Adapter = new MessageAdapter(Messages);
+            var imagerepository = new GenericRepository<ImageMessage>();
+            var imagemsgs = imagerepository.GetAll();
+
+            foreach (var m in imagemsgs)
+            {
+                Messages.Add(m);
+            }
         }
 
         readonly Action<string> callback = o =>

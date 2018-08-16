@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using Messenger.Helpers;
 using Messenger.Models;
 
 namespace Messenger
 {
     public class MessageAdapter : RecyclerView.Adapter
     {
+        #region Properties
+
         LayoutInflater Inflater { get; set; }
         public IList<IMessage> Items { get; set; }
+
+        #endregion
 
         #region View Holders 
 
@@ -38,10 +43,23 @@ namespace Messenger
 
         public class ImageMessageViewHolder : RecyclerView.ViewHolder
         {
+            TextView _name;
+            ImageView _image;
+
+            public TextView Name
+            {
+                get { return _name; }
+            }
+
+            public ImageView Image
+            {
+                get { return _image; }
+            }
 
             public ImageMessageViewHolder(View v) : base(v)
             {
-
+                _name = (TextView)v.FindViewById(Resource.Id.ImageMessageNameTextView);
+                _image = (ImageView)v.FindViewById(Resource.Id.ImageMessagePhotoImageView);
             }
         }
 
@@ -66,6 +84,9 @@ namespace Messenger
                 case MessageTypes.TextMessage:
                     BindTextMessage(holder, position);
                     break;
+                case MessageTypes.ImageMessage:
+                    BindImageMessage(holder, position);
+                    break;
             }
         }
 
@@ -84,7 +105,39 @@ namespace Messenger
             };
         }
 
+        void BindImageMessage(RecyclerView.ViewHolder holder, int position)
+        {
+            var item = GetItem<ImageMessage>(position);
+            if (item == null) return;
+
+            var ImageMessageViewHolder = (ImageMessageViewHolder)holder;
+
+            var imageBitmap = ImageHelper.GetImageBitmapFromUrl(item.url);
+            ImageMessageViewHolder.Image.SetImageBitmap(imageBitmap);
+
+            var tag = new Tag
+            {
+                Position = position,
+                Id = item.msg_id
+            };
+        }
+
         #endregion
+
+        public override int GetItemViewType(int position)
+        {
+            var ItemViewType = Items[position].GetViewType();
+
+            switch (ItemViewType)
+            {
+                case MessageTypes.TextMessage:
+                    return 1;
+                case MessageTypes.ImageMessage:
+                    return 2;
+                default:
+                    return 0;
+            }
+        }
 
         public T GetItem<T>(int position) where T : IMessage
         {
@@ -101,7 +154,10 @@ namespace Messenger
             return result;
         }
 
-        public override int ItemCount => throw new NotImplementedException();
+        public override int ItemCount
+        {
+            get { return Items.Count; }
+        }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup viewGroup, int viewType)
         {
@@ -110,6 +166,12 @@ namespace Messenger
 
             switch (viewType)
             {
+                case 1:
+                    itemView = LayoutInflater.From(viewGroup.Context).Inflate(Resource.Layout.TextMessage, viewGroup, false);
+                    return new TextMessageViewHolder(itemView);
+                case 2:
+                    itemView = LayoutInflater.From(viewGroup.Context).Inflate(Resource.Layout.ImageMessage, viewGroup, false);
+                    return new ImageMessageViewHolder(itemView);
                 default:
                     itemView = LayoutInflater.From(viewGroup.Context).Inflate(Resource.Layout.TextMessage, viewGroup, false);
                     return new TextMessageViewHolder(itemView);

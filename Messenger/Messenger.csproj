@@ -130,6 +130,7 @@
     <Compile Include="Helpers\MessageConverter.cs" />
     <Compile Include="Models\MessageTypes.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
