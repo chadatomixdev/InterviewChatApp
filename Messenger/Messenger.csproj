@@ -131,6 +131,7 @@
     <Compile Include="Models\MessageTypes.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Adapters\GroupAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -145,6 +146,8 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\layout\TextMessage.axml" />
     <AndroidResource Include="Resources\layout\ImageMessage.axml" />
+    <AndroidResource Include="Resources\layout\Group.axml" />
+    <AndroidResource Include="Resources\drawable\group.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -157,6 +160,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Repository\" />
     <Folder Include="Database Models\" />
+    <Folder Include="Adapters\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\MessageStreamTypes\TextMessage.txt" />

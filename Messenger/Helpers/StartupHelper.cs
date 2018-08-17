@@ -1,5 +1,4 @@
-﻿using Messenger.DatabaseModels;
-using Messenger.Models;
+﻿using Messenger.Models;
 using SQLite;
 
 namespace Messenger.Helpers
@@ -21,6 +20,7 @@ namespace Messenger.Helpers
             sqlConnection.CreateTable<ImageMessage>();
             sqlConnection.CreateTable<TextMessage>();
             sqlConnection.CreateTable<Group>();
+            sqlConnection.CreateTable<UserRegistration>();
         }
     }
 }

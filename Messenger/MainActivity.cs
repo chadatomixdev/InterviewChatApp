@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Widget;
+using Messenger.Adapters;
 using Messenger.Helpers;
 using Messenger.Models;
 using Messenger.Repository;
@@ -14,10 +16,22 @@ namespace Messenger
     [Activity(Label = "Messenger", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        RecyclerView recyclerView;
+        #region Properties
+
+        //RecyclerView recyclerView;
         public RecyclerView.LayoutManager layoutManager;
         public MessageAdapter Adapter { get; set; }
-        List<IMessage> Messages { get; set; }
+        //List<IMessage> Messages { get; set; }
+
+        List<Group> Groups { get; set; }
+
+        static GenericRepository<Group> _groupRepository = new GenericRepository<Group>();
+        static GenericRepository<TextMessage> _textMessageRepository = new GenericRepository<TextMessage>();
+        static GenericRepository<ImageMessage> _imageRepository = new GenericRepository<ImageMessage>();
+        static GenericRepository<UserRegistration> _userRepository = new GenericRepository<UserRegistration>();
+        static GenericRepository<DeliveryReport> _deliverReportRepository = new GenericRepository<DeliveryReport>();
+
+        #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,42 +39,65 @@ namespace Messenger
 
             SetContentView(Resource.Layout.Main);
 
-            Messages = new List<IMessage>();
+            //Messages = new List<IMessage>();
 
             StartupHelper.Initialize();
 
-            //new MessageStream().Subscribe(callback);
+            new MessageStream().Subscribe(callback);
 
             ////publish messages with the send method
             //new MessageStream().Send("My message");
 
-            GetMessages();
+            GetGroups();
 
-            recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            //GetMessages();
 
-            layoutManager = new LinearLayoutManager(this);
-            recyclerView.SetLayoutManager(layoutManager);
-            Adapter = new MessageAdapter(Messages);
-            recyclerView.SetAdapter(Adapter);
+            //recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+
+            //layoutManager = new LinearLayoutManager(this);
+            //recyclerView.SetLayoutManager(layoutManager);
+            //Adapter = new MessageAdapter(Messages);
+            //recyclerView.SetAdapter(Adapter);
+
+
+            var groupList = FindViewById<ListView>(Resource.Id.groupListView);
+            groupList.ItemClick += OnItemClick;
+
+            groupList.Adapter = new GroupAdapter(Groups);
         }
 
-        void GetMessages()
+        void GetGroups()
         {
-            var textrepository = new GenericRepository<TextMessage>();
-            var textmsgs = textrepository.GetAll();
+            Groups = _groupRepository.GetAll();
+        }
 
-            foreach (var m in textmsgs)
-            {
-                Messages.Add(m);
-            }
+        //void GetMessages()
+        //{
+        //var textrepository = new GenericRepository<TextMessage>();
+        //var textmsgs = textrepository.GetAll();
 
-            var imagerepository = new GenericRepository<ImageMessage>();
-            var imagemsgs = imagerepository.GetAll();
+        //foreach (var m in textmsgs)
+        //{
+        //    Messages.Add(m);
+        //}
 
-            foreach (var m in imagemsgs)
-            {
-                Messages.Add(m);
-            }
+        //var imagerepository = new GenericRepository<ImageMessage>();
+        //var imagemsgs = imagerepository.GetAll();
+
+        //foreach (var m in imagemsgs)
+        //{
+        //    Messages.Add(m);
+        //}
+        //}
+
+        void OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var group = Groups[e.Position];
+
+            var dialog = new AlertDialog.Builder(this);
+            dialog.SetMessage(group.group_name);
+            dialog.SetNeutralButton("OK", delegate { });
+            dialog.Show();
         }
 
         readonly Action<string> callback = o =>
@@ -70,7 +107,59 @@ namespace Messenger
 
                      using (var sqlConnection = new SQLiteConnection(ApplicationHelper.DatabasePath))
                      {
-                         sqlConnection.Insert(message);
+                         switch (message.mtype)
+                         {
+                             case "group_created":
+                                 var gm = (Group)message;
+
+                                 var gp = _groupRepository.Where(g => g.group_id == gm.group_id);
+
+                                 if (gp.Count == 0)
+                                 {
+                                     sqlConnection.Insert(message);
+                                 }
+                                 break;
+                             case "text_message":
+                                 var tmsg = (TextMessage)message;
+
+                                 var tmr = _textMessageRepository.Where(t => t.msg_id == tmsg.msg_id);
+
+                                 if (tmr.Count == 0)
+                                 {
+                                     sqlConnection.Insert(message);
+                                 }
+                                 break;
+                             case "image_message":
+                                 var imsg = (ImageMessage)message;
+
+                                 var imr = _imageRepository.Where(i => i.msg_id == imsg.msg_id);
+
+                                 if (imr.Count == 0)
+                                 {
+                                     sqlConnection.Insert(message);
+                                 }
+                                 break;
+                             case "delivery_report":
+                                 var dr = (DeliveryReport)message;
+
+                                 var drr = _deliverReportRepository.Where(d => d.msg_id == dr.msg_id);
+
+                                 if (drr.Count == 0)
+                                 {
+                                     sqlConnection.Insert(message);
+                                 }
+                                 break;
+                             case "user_registered":
+                                 var ur = (UserRegistration)message;
+
+                                 var urr = _userRepository.Where(u => u.user_id == ur.user_id);
+
+                                 if (urr.Count == 0)
+                                 {
+                                     sqlConnection.Insert(message);
+                                 }
+                                 break;
+                         }
                      }
                  };
     }
