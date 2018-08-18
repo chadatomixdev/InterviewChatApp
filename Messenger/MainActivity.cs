@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Android.App;
+using Android.Content;
 using Android.OS;
-using Android.Support.V7.Widget;
 using Android.Widget;
 using Messenger.Adapters;
 using Messenger.Helpers;
@@ -17,11 +17,6 @@ namespace Messenger
     public class MainActivity : Activity
     {
         #region Properties
-
-        //RecyclerView recyclerView;
-        public RecyclerView.LayoutManager layoutManager;
-        public MessageAdapter Adapter { get; set; }
-        //List<IMessage> Messages { get; set; }
 
         List<Group> Groups { get; set; }
 
@@ -39,26 +34,11 @@ namespace Messenger
 
             SetContentView(Resource.Layout.Main);
 
-            //Messages = new List<IMessage>();
-
             StartupHelper.Initialize();
 
             new MessageStream().Subscribe(callback);
 
-            ////publish messages with the send method
-            //new MessageStream().Send("My message");
-
             GetGroups();
-
-            //GetMessages();
-
-            //recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
-
-            //layoutManager = new LinearLayoutManager(this);
-            //recyclerView.SetLayoutManager(layoutManager);
-            //Adapter = new MessageAdapter(Messages);
-            //recyclerView.SetAdapter(Adapter);
-
 
             var groupList = FindViewById<ListView>(Resource.Id.groupListView);
             groupList.ItemClick += OnItemClick;
@@ -71,33 +51,14 @@ namespace Messenger
             Groups = _groupRepository.GetAll();
         }
 
-        //void GetMessages()
-        //{
-        //var textrepository = new GenericRepository<TextMessage>();
-        //var textmsgs = textrepository.GetAll();
-
-        //foreach (var m in textmsgs)
-        //{
-        //    Messages.Add(m);
-        //}
-
-        //var imagerepository = new GenericRepository<ImageMessage>();
-        //var imagemsgs = imagerepository.GetAll();
-
-        //foreach (var m in imagemsgs)
-        //{
-        //    Messages.Add(m);
-        //}
-        //}
-
         void OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var group = Groups[e.Position];
 
-            var dialog = new AlertDialog.Builder(this);
-            dialog.SetMessage(group.group_name);
-            dialog.SetNeutralButton("OK", delegate { });
-            dialog.Show();
+            var intent = new Intent(this, typeof(ChatActivity));
+            intent.PutExtra("GroupID", group.group_id);
+
+            StartActivity(intent);
         }
 
         readonly Action<string> callback = o =>

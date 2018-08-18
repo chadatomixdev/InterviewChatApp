@@ -132,6 +132,7 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Adapters\GroupAdapter.cs" />
+    <Compile Include="ChatActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -148,6 +149,7 @@
     <AndroidResource Include="Resources\layout\ImageMessage.axml" />
     <AndroidResource Include="Resources\layout\Group.axml" />
     <AndroidResource Include="Resources\drawable\group.png" />
+    <AndroidResource Include="Resources\layout\Chat.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
