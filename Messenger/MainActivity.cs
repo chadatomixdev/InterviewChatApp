@@ -19,13 +19,14 @@ namespace Messenger
     {
         #region Properties
 
-        List<Group> Groups { get; set; }
-
+        static List<Group> Groups { get; set; }
         static GenericRepository<Group> _groupRepository = new GenericRepository<Group>();
         static GenericRepository<TextMessage> _textMessageRepository = new GenericRepository<TextMessage>();
         static GenericRepository<ImageMessage> _imageRepository = new GenericRepository<ImageMessage>();
         static GenericRepository<UserRegistration> _userRepository = new GenericRepository<UserRegistration>();
         static GenericRepository<DeliveryReport> _deliverReportRepository = new GenericRepository<DeliveryReport>();
+        public static GroupAdapter Adapter;
+        public static Context _context { get; set; }
 
         #endregion
 
@@ -34,6 +35,7 @@ namespace Messenger
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Main);
+            _context = this;
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
@@ -48,10 +50,12 @@ namespace Messenger
             var groupList = FindViewById<ListView>(Resource.Id.groupListView);
             groupList.ItemClick += OnItemClick;
 
-            groupList.Adapter = new GroupAdapter(Groups);
+            Adapter = new GroupAdapter(Groups);
+
+            groupList.Adapter = Adapter;
         }
 
-        void GetGroups()
+        static void GetGroups()
         {
             Groups = _groupRepository.GetAll();
         }
@@ -84,6 +88,10 @@ namespace Messenger
                                  {
                                      sqlConnection.Insert(message);
                                  }
+
+                                   GetGroups();
+                                   Adapter.NotifyDataSetChanged();
+
                                  break;
                              case "text_message":
                                  var tmsg = (TextMessage)message;
