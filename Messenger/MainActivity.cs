@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
 using Messenger.Adapters;
 using Messenger.Helpers;
@@ -13,7 +14,7 @@ using SQLite;
 
 namespace Messenger
 {
-    [Activity(Label = "Messenger", MainLauncher = true)]
+    [Activity(Label = "Messenger", MainLauncher = true, Theme = "@style/Theme.Main")]
     public class MainActivity : Activity
     {
         #region Properties
@@ -33,6 +34,10 @@ namespace Messenger
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Main);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
+            ActionBar.Title = "Messenger";
 
             StartupHelper.Initialize();
 

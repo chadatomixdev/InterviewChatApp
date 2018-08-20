@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using Android.App;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Messenger.Models;
 using Messenger.Repository;
 
 namespace Messenger
 {
-    [Activity(Label = "ChatActivity")]
-    public class ChatActivity : Activity
+    [Activity(Label = "ChatActivity", Theme = "@style/Theme.Main")]
+    public class ChatActivity : AppCompatActivity
     {
         #region Properties 
 
