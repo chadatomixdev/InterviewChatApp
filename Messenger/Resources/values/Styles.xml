@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="AppTheme" parent="Base.Theme">
+  </style>
+  <style name="Base.Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+<!--    <item name="colorPrimary">@color/DarkOrangeLight</item>
+    <item name="colorPrimaryDark">@color/DarkOrange</item>
+    <item name="colorAccent">@color/DarkOrangeAcent</item>-->
+    <item name="windowActionBarOverlay">true</item>
+<!--    <item name="android:windowBackground">@color/bg</item>-->
+    <item name="windowActionBar">false</item>
+    <item name="windowActionBarOverlay">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+</resources>

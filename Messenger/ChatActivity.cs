@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Widget;
 using Messenger.Models;
 using Messenger.Repository;
+using Refractored.Fab;
 
 namespace Messenger
 {
-    [Activity(Label = "ChatActivity")]
+    [Activity(Theme = "@style/AppTheme")]
     public class ChatActivity : Activity
     {
         #region Properties 
@@ -16,12 +19,15 @@ namespace Messenger
         public RecyclerView.LayoutManager layoutManager;
         public MessageAdapter Adapter { get; set; }
         List<IMessage> Messages { get; set; }
+        FloatingActionButton fab;
+        EditText messageBox;
 
         #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
             SetContentView(Resource.Layout.Chat);
 
             string groupId = Intent.GetStringExtra("GroupID");
@@ -35,10 +41,17 @@ namespace Messenger
             Adapter = new MessageAdapter(Messages);
             recyclerView.SetAdapter(Adapter);
 
+            //fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            messageBox = FindViewById<EditText>(Resource.Id.messageInput);
+
             GetMessages(groupId);
 
-            ////publish messages with the send method
-            //new MessageStream().Send("My message");
+            fab.Click += PostMessage;
+        }
+
+        void PostMessage(object sender, EventArgs e)
+        {
+              new MessageStream().Send(messageBox.Text);
         }
 
         void GetMessages(string groupId)

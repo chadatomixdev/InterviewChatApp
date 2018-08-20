@@ -13,7 +13,7 @@ using SQLite;
 
 namespace Messenger
 {
-    [Activity(Label = "Messenger", MainLauncher = true)]
+    [Activity(Label = "Messenger", MainLauncher = true, Theme = "@style/Theme.AppCompat")]
     public class MainActivity : Activity
     {
         #region Properties
@@ -25,12 +25,14 @@ namespace Messenger
         static GenericRepository<ImageMessage> _imageRepository = new GenericRepository<ImageMessage>();
         static GenericRepository<UserRegistration> _userRepository = new GenericRepository<UserRegistration>();
         static GenericRepository<DeliveryReport> _deliverReportRepository = new GenericRepository<DeliveryReport>();
+        public static Context _context { get; set; }
 
         #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            _context = this;
 
             SetContentView(Resource.Layout.Main);
 
@@ -108,7 +110,9 @@ namespace Messenger
                                  if (drr.Count == 0)
                                  {
                                      sqlConnection.Insert(message);
-                                 }
+
+                                     UIHelper.ShowToastMethod(_context, "Message Delivered");
+                                 }                                  
                                  break;
                              case "user_registered":
                                  var ur = (UserRegistration)message;
