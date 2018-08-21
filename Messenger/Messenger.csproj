@@ -17,7 +17,7 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -152,6 +152,8 @@
     <Compile Include="Adapters\GroupAdapter.cs" />
     <Compile Include="ChatActivity.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Services\MessagingServiceConnection.cs" />
+    <Compile Include="Services\MessagingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -184,6 +186,7 @@
     <Folder Include="Repository\" />
     <Folder Include="Database Models\" />
     <Folder Include="Adapters\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\MessageStreamTypes\TextMessage.txt" />
