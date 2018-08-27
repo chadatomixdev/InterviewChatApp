@@ -39,12 +39,12 @@ namespace Messenger
             sendButton = FindViewById<FloatingActionButton>(Resource.Id.fab);
             messageBox = FindViewById<EditText>(Resource.Id.messageInput);
 
+            GetMessages();
+
             layoutManager = new LinearLayoutManager(this);
             recyclerView.SetLayoutManager(layoutManager);
             Adapter = new MessageAdapter(Messages);
             recyclerView.SetAdapter(Adapter);
-
-            GetMessages();
 
             sendButton.Click += SendButton_Click;
         }
@@ -85,7 +85,7 @@ namespace Messenger
                     group_id = groupId,
                     message = messageBox.Text,
                     sender_id = txtmsg.sender_id,
-                    ts = txtmsg.ts //Would traditi
+                    ts = DateTime.Now.Ticks.ToString()
                 };
 
                 textrepository.Insert(msg);

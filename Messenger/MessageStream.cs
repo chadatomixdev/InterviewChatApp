@@ -2,27 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Android.App;
-using Android.Content;
 using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Java.Nio.FileNio;
 
 namespace Messenger
 {
     public class MessageStream
     {
-        private static List<Func<string>> _generators;
+        static List<Func<string>> _generators;
 
-        private Action<string> _handler;
+        Action<string> _handler;
 
-        private static Random random = new Random();
+        static Random random = new Random();
 
         public MessageStream()
         {
@@ -44,7 +37,7 @@ namespace Messenger
             throw new NotImplementedException();
         }
 
-        private Timer tmrPubisher;
+        Timer tmrPubisher;
         public void Subscribe(Action<string> handler)
         {
             _handler = handler;
@@ -55,9 +48,9 @@ namespace Messenger
             tmrPubisher.Start();
         }
 
-        private void GenerateEvent()
+        void GenerateEvent()
         {
-            tmrPubisher.Interval = random.Next(1,4000);
+            tmrPubisher.Interval = random.Next(1, 4000);
             tmrPubisher.Start();
 
             if (_generators.Any() == false) return;
@@ -110,7 +103,7 @@ namespace Messenger
         };
 
 
-        private static List<string> _groupIds = ((Func<List<string>>)(() =>
+        static List<string> _groupIds = ((Func<List<string>>)(() =>
         {
             var groupIds = new List<string>();
             for (var i = 0; i < 10; i++)
@@ -121,11 +114,11 @@ namespace Messenger
             return groupIds;
         }))();
 
-        private static List<string> _groupCreationGroupIds = _groupIds.Select(n => n).ToList();
+        static List<string> _groupCreationGroupIds = _groupIds.Select(n => n).ToList();
 
 
 
-        private static readonly Func<string> userRegisteredGenerator = () =>
+        static readonly Func<string> userRegisteredGenerator = () =>
         {
             lock (_users)
             {
@@ -138,7 +131,7 @@ namespace Messenger
             }
         };
 
-        private static readonly Func<string> groupCreatedGenerator = () =>
+        static readonly Func<string> groupCreatedGenerator = () =>
         {
             lock (_groupCreationGroupIds)
             {
@@ -152,7 +145,7 @@ namespace Messenger
             }
         };
 
-        private static Func<string> textMessageGenerator = () =>
+        static Func<string> textMessageGenerator = () =>
         {
             return ReadFile("TextMessage.txt")
                 .Replace("USERID", random.Next(10).ToString())
@@ -162,7 +155,7 @@ namespace Messenger
                 .Replace("TIME", DateTime.Now.Ticks.ToString());
         };
 
-        private static Func<string> imageMessageGenerator = () =>
+        static Func<string> imageMessageGenerator = () =>
         {
             var imageUrl = "https://www.petmd.com/sites/default/files/CANS_HamsterSign_729603697%20(1).jpg";
 
@@ -174,7 +167,7 @@ namespace Messenger
                 .Replace("TIME", DateTime.Now.Ticks.ToString());
         };
 
-        
+
         /// <summary>
         /// Simulates sending a message. Returns whether the send was successful or not.
         /// </summary>

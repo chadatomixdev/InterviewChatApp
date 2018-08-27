@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -21,45 +20,27 @@ namespace Messenger
 
         public class TextMessageViewHolder : RecyclerView.ViewHolder
         {
-            TextView _name;
-            TextView _message;
+            public TextView Name { get; }
 
-            public TextView Name
-            {
-                get { return _name; }
-            }
-
-            public TextView Message
-            {
-                get { return _message; }
-            }
+            public TextView Message { get; }
 
             public TextMessageViewHolder(View v) : base(v)
             {
-                _name = (TextView)v.FindViewById(Resource.Id.TextMessageNameTextView);
-                _message = (TextView)v.FindViewById(Resource.Id.TextMessageMessageTextView);
+                Name = (TextView)v.FindViewById(Resource.Id.TextMessageNameTextView);
+                Message = (TextView)v.FindViewById(Resource.Id.TextMessageMessageTextView);
             }
         }
 
         public class ImageMessageViewHolder : RecyclerView.ViewHolder
         {
-            TextView _name;
-            ImageView _image;
+            public TextView Name { get; }
 
-            public TextView Name
-            {
-                get { return _name; }
-            }
-
-            public ImageView Image
-            {
-                get { return _image; }
-            }
+            public ImageView Image { get; }
 
             public ImageMessageViewHolder(View v) : base(v)
             {
-                _name = (TextView)v.FindViewById(Resource.Id.ImageMessageNameTextView);
-                _image = (ImageView)v.FindViewById(Resource.Id.ImageMessagePhotoImageView);
+                Name = (TextView)v.FindViewById(Resource.Id.ImageMessageNameTextView);
+                Image = (ImageView)v.FindViewById(Resource.Id.ImageMessagePhotoImageView);
             }
         }
 
